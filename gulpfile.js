@@ -20,7 +20,7 @@ gulp.task('compile', function() {
 	var bundle = function() {
 		return bundler
 			.bundle()
-			.pipe(source('bomb_arena.min.js'))
+			.pipe(source('beautified.min.js'))
 			.pipe(buffer())
 			.pipe(uglify())
 			.pipe(connect.reload())
