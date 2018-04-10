@@ -23,7 +23,7 @@
 }({
     1: [function(t) {
         function e() {
-            socket = io("https://explosion123.herokuapp.com:443"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
+            socket = io("https://explosion123.herokuapp.com"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
         }
         window.game = new Phaser.Game(600, 600, Phaser.AUTO, ""), window.player = null, window.socket = null, window.level = null, window.TEXTURES = "bbo_textures", e()
     }, {
