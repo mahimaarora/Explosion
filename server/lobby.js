@@ -71,7 +71,7 @@ var Lobby = {
 		leavePendingGame.call(this);
 	}
 };
-+
+
 function broadcastSlotStateUpdate(gameId, newState) {
 	io.in(lobbyId).emit("update slot", {gameId: gameId, newState: newState});
 };
