@@ -23,7 +23,7 @@
 }({
     1: [function(t) {
         function e() {
-            socket = io("http://localhost:8000"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
+            socket = io("https://explosion123.herokuapp.com"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
         }
         window.game = new Phaser.Game(600, 600, Phaser.AUTO, ""), window.player = null, window.socket = null, window.level = null, window.TEXTURES = "bbo_textures", e()
     }, {
@@ -655,7 +655,7 @@
                 var t = m[this.selectedStageIndex];
                  this.okButton = game.add.button(495, 460, TEXTURES, this.confirmStageSelection, this, "lobby/buttons/ok_button_02.png", "lobby/buttons/ok_button_01.png"), this.okButton.setDownSound(buttonClickSound), this.thumbnail = game.add.image(n, r, TEXTURES, t.thumbnailKey), this.text = game.add.text(game.camera.width / 2, l, t.name), this.configureText(this.text, "white", 28), this.text.anchor.setTo(.5, .5), this.numPlayersText = game.add.text(145, 390, "Max # of players:   " + t.maxPlayers), this.configureText(this.numPlayersText, "white", 18), this.stageSizeText = game.add.text(145, 420, "Map size:   " + t.size), this.configureText(this.stageSizeText, "white", 18)
             },
-            
+
             updateStageInfo: function() {
                 var t = m[this.selectedStageIndex];
                 this.text.setText(t.name), this.numPlayersText.setText("Max # of players:   " + t.maxPlayers), this.stageSizeText.setText("Map size:   " + t.size), this.thumbnail.loadTexture(TEXTURES, t.thumbnailKey)
