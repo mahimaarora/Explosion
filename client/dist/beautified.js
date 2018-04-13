@@ -23,7 +23,7 @@
 }({
     1: [function(t) {
         function e() {
-            socket = io("https://explosion123.herokuapp.com"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
+            socket = io("http://localhost:8000"), t("./game/mods/phaser_enhancements"), game.state.add("Boot", t("./game/states/boot")), game.state.add("Preloader", t("./game/states/preloader")), game.state.add("TitleScreen", t("./game/states/title_screen")), game.state.add("Lobby", t("./game/states/lobby")), game.state.add("StageSelect", t("./game/states/stage_select")), game.state.add("PendingGame", t("./game/states/pending_game")), game.state.add("Level", t("./game/states/level")), game.state.add("GameOver", t("./game/states/game_over")), game.state.start("Boot")
         }
         window.game = new Phaser.Game(600, 600, Phaser.AUTO, ""), window.player = null, window.socket = null, window.level = null, window.TEXTURES = "bbo_textures", e()
     }, {
@@ -488,9 +488,9 @@
                 }, null == i && (i = game.add.tileSprite(0, 0, 608, 608, "repeating_bombs")), i.doNotDestroy = !0, this.backdrop = game.add.image(12.5, 12.5, TEXTURES, "lobby/lobby_backdrop.png"), this.header = game.add.text(game.camera.width / 2, h, "Lobby"), this.header.anchor.setTo(.5, .5), s.configureText(this.header, "white", 32), this.slots = [], this.labels = [];
                 socket.emit("enter lobby"), socket.hasListeners("add slots") || (socket.on("add slots", this.addSlots.bind(this)), socket.on("update slot", this.updateSlot.bind(this)))
             },
-            update: function() {
-                i.tilePosition.x++, i.tilePosition.y--
-            },
+            // update: function() {
+            //     i.tilePosition.x++, i.tilePosition.y--
+            // },
             addSlots: function(t) {
                 if (!(this.slots.length > 0))
                     for (var e = 0; e < t.length; e++) {
@@ -557,9 +557,9 @@
                 game.add.image(o, n, TEXTURES, "lobby/backdrop.png");
                 this.startGameButton = game.add.button(r, l, TEXTURES, null, this, "lobby/buttons/start_game_button_03.png", "lobby/buttons/start_game_button_03.png"), this.leaveGameButton = game.add.button(r, m, TEXTURES, this.leaveGameAction, null, "lobby/buttons/leave_game_button_02.png", "lobby/buttons/leave_game_button_01.png"), this.leaveGameButton.setDownSound(buttonClickSound), this.characterSquares = this.drawCharacterSquares(4), this.characterImages = [], this.numPlayersInGame = 0, this.minPlayerMessage = game.add.text(b, y, "Cannot start game without\nat least 2 players."), i.configureText(this.minPlayerMessage, "red", 17), this.minPlayerMessage.visible = !1, socket.on("show current players", this.populateCharacterSquares.bind(this)), socket.on("player joined", this.playerJoined.bind(this)), socket.on("player left", this.playerLeft.bind(this)), socket.on("start game on client", this.startGame)
             },
-            update: function() {
-                s.tilePosition.x++, s.tilePosition.y--
-            },
+            // update: function() {
+            //     s.tilePosition.x++, s.tilePosition.y--
+            // },
             drawCharacterSquares: function(t) {
                 for (var e = [], i = d, a = h, s = 0; f > s; s++) {
                     var o = t > s ? "lobby/slots/character_square_01.png" : "lobby/slots/character_square_02.png";
@@ -653,17 +653,9 @@
                 game.add.image(s, o, TEXTURES, "lobby/select_stage.png");
                 this.selectedStageIndex = 0;
                 var t = m[this.selectedStageIndex];
-                this.leftButton = game.add.button(150, 180, TEXTURES, this.leftSelect, this, "lobby/buttons/left_select_button_02.png", "lobby/buttons/left_select_button_01.png"), this.rightButton = game.add.button(400, 180, TEXTURES, this.rightSelect, this, "lobby/buttons/right_select_button_02.png", "lobby/buttons/right_select_button_01.png"), this.okButton = game.add.button(495, 460, TEXTURES, this.confirmStageSelection, this, "lobby/buttons/ok_button_02.png", "lobby/buttons/ok_button_01.png"), this.leftButton.setDownSound(buttonClickSound), this.rightButton.setDownSound(buttonClickSound), this.okButton.setDownSound(buttonClickSound), this.thumbnail = game.add.image(n, r, TEXTURES, t.thumbnailKey), this.text = game.add.text(game.camera.width / 2, l, t.name), this.configureText(this.text, "white", 28), this.text.anchor.setTo(.5, .5), this.numPlayersText = game.add.text(145, 390, "Max # of players:   " + t.maxPlayers), this.configureText(this.numPlayersText, "white", 18), this.stageSizeText = game.add.text(145, 420, "Map size:   " + t.size), this.configureText(this.stageSizeText, "white", 18)
+                 this.okButton = game.add.button(495, 460, TEXTURES, this.confirmStageSelection, this, "lobby/buttons/ok_button_02.png", "lobby/buttons/ok_button_01.png"), this.okButton.setDownSound(buttonClickSound), this.thumbnail = game.add.image(n, r, TEXTURES, t.thumbnailKey), this.text = game.add.text(game.camera.width / 2, l, t.name), this.configureText(this.text, "white", 28), this.text.anchor.setTo(.5, .5), this.numPlayersText = game.add.text(145, 390, "Max # of players:   " + t.maxPlayers), this.configureText(this.numPlayersText, "white", 18), this.stageSizeText = game.add.text(145, 420, "Map size:   " + t.size), this.configureText(this.stageSizeText, "white", 18)
             },
-            // leftSelect: function() {
-            //     0 === this.selectedStageIndex ? this.selectedStageIndex = m.length - 1 : this.selectedStageIndex--, this.updateStageInfo()
-            // },
-            // rightSelect: function() {
-            //     this.selectedStageIndex === m.length - 1 ? this.selectedStageIndex = 0 : this.selectedStageIndex++, this.updateStageInfo()
-            // },
-            update: function() {
-                a.tilePosition.x++, a.tilePosition.y--
-            },
+            
             updateStageInfo: function() {
                 var t = m[this.selectedStageIndex];
                 this.text.setText(t.name), this.numPlayersText.setText("Max # of players:   " + t.maxPlayers), this.stageSizeText.setText("Map size:   " + t.size), this.thumbnail.loadTexture(TEXTURES, t.thumbnailKey)
@@ -691,71 +683,7 @@
             h = 265,
             d = 700,
             u = 8e4;
-            //  c = [{
-            //     startingX: 400,
-            //     startingY: 50,
-            //     image: "cloud1"
-            // }, {
-            //     startingX: -150,
-            //     startingY: 140,
-            //     image: "cloud1"
-            // }, {
-            //     startingX: 375,
-            //     startingY: 200,
-            //     image: "cloud1"
-            // }, {
-            //     startingX: 330,
-            //     startingY: -20,
-            //     image: "cloud1"
-            // }, {
-            //     startingX: 110,
-            //     startingY: 110,
-            //     image: "cloud2"
-            // }, {
-            //     startingX: -300,
-            //     startingY: 140,
-            //     image: "cloud2"
-            // }, {
-            //     startingX: -300,
-            //     startingY: -30,
-            //     image: "cloud2"
-            // }, {
-            //     startingX: 0,
-            //     startingY: 140,
-            //     image: "cloud3"
-            // }, {
-            //     startingX: -75,
-            //     startingY: 200,
-            //     image: "cloud4"
-            // }, {
-            //     startingX: 200,
-            //     startingY: 20,
-            //     image: "cloud5"
-            // }, {
-            //     startingX: 100,
-            //     startingY: -20,
-            //     image: "cloud5"
-            // }, {
-            //     startingX: -200,
-            //     startingY: 250,
-            //     image: "cloud6"
-            // }, {
-            //     startingX: 40,
-            //     startingY: 80,
-            //     image: "cloud7"
-            // }, {
-            //     startingX: 200,
-            //     startingY: 180,
-            //     image: "cloud1"
-            // }, {
-            //     startingX: -150,
-            //     startingY: 20,
-            //     image: "cloud5"
-            // }, {
-            //     startingX: 300,
-            //     startingY: 230,
-            //     image: "cloud4"
-            // }]
+
         i.prototype = {
             create: function() {
                 this.showingInstructions = !1, this.justClickedHowTo = !1, this.justClickedOutOfHowTo = !1,this.createButtons();
@@ -780,25 +708,7 @@
                     x: n
                 }, 300, Phaser.Easing.Default, !1, e)
             },
-            // createClouds: function() {
-            //     var t = (game.camera.width, -260),
-            //         e = u * (game.camera.width - t) / game.camera.width;
-            //     game.add.image(0, 0, TEXTURES, "titlescreen/background.png");
-            //     for (var i = 0; i < c.length; i++) ! function(i) {
-            //         var a = game.add.image(i.startingX, i.startingY, TEXTURES, "titlescreen/" + i.image + ".png");
-            //         a.anchor.setTo(0, 0);
-            //         var s = u * (game.camera.width - i.startingX) / game.camera.width,
-            //             o = game.add.tween(a).to({
-            //                 x: d
-            //             }, s, Phaser.Easing.Default, !0, 0, 0),
-            //             n = function() {
-            //                 a.x = t, game.add.tween(a).to({
-            //                     x: d
-            //                 }, e, Phaser.Easing.Default, !0, 0, -1).start()
-            //             };
-            //         o.onComplete.addOnce(n), o.start()
-            //     }(c[i])
-            // },
+
             createButtons: function() {
               var t = (game.camera.width, -260),
                   e = u * (game.camera.width - t) / game.camera.width;

@@ -7,7 +7,7 @@ var MapInfo = require("../common/map_info");
 
 var lobbySlots = [];
 var lobbyId = -1;
-var numLobbySlots = 7;
+var numLobbySlots = 4;
 
 var Lobby = {
 	getLobbySlots: function() {

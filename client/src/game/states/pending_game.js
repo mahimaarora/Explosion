@@ -39,11 +39,11 @@ PendingGame.prototype = {
 		var backdrop = game.add.image(xOffset, yOffset, TEXTURES, "lobby/backdrop.png");
 		this.startGameButton = game.add.button(buttonXOffset, startGameButtonYOffset, TEXTURES, null, this,
 			"lobby/buttons/start_game_button_03.png", "lobby/buttons/start_game_button_03.png");
-		this.leaveGameButton = game.add.button(buttonXOffset, leaveButtonYOffset, TEXTURES, this.leaveGameAction, null, 
+		this.leaveGameButton = game.add.button(buttonXOffset, leaveButtonYOffset, TEXTURES, this.leaveGameAction, null,
 			"lobby/buttons/leave_game_button_02.png", "lobby/buttons/leave_game_button_01.png");
 
 		this.leaveGameButton.setDownSound(buttonClickSound);
-		
+
 		this.characterSquares = this.drawCharacterSquares(4);
 		this.characterImages = [];
 		this.numPlayersInGame = 0;
@@ -58,10 +58,10 @@ PendingGame.prototype = {
 		socket.on("start game on client", this.startGame);
 	},
 
-	update: function() {
-		repeatingBombTilesprite.tilePosition.x++;
-		repeatingBombTilesprite.tilePosition.y--;
-	},
+	// update: function() {
+	// 	repeatingBombTilesprite.tilePosition.x++;
+	// 	repeatingBombTilesprite.tilePosition.y--;
+	// },
 
 	drawCharacterSquares: function(numOpenings) {
 		var characterSquares = [];
@@ -87,7 +87,7 @@ PendingGame.prototype = {
 
 		for(var playerId in data.players) {
 			var color = data.players[playerId].color;
-			this.characterImages[playerId] = game.add.image(this.characterSquares[this.numPlayersInGame].position.x + characterOffsetX, 
+			this.characterImages[playerId] = game.add.image(this.characterSquares[this.numPlayersInGame].position.x + characterOffsetX,
 				this.characterSquares[this.numPlayersInGame].position.y + characterOffsetY, TEXTURES, "lobby/bomberman_head/bomberman_head_" + color + ".png");
 			this.numPlayersInGame++;
 		}

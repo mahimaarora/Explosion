@@ -28,12 +28,12 @@ StageSelect.prototype = {
 		this.selectedStageIndex = 0;
 		var initialStage = stages[this.selectedStageIndex];
 
-		this.leftButton = game.add.button(150, 180, TEXTURES, this.leftSelect, this, "lobby/buttons/left_select_button_02.png", "lobby/buttons/left_select_button_01.png");
-		this.rightButton = game.add.button(400, 180, TEXTURES, this.rightSelect, this, "lobby/buttons/right_select_button_02.png", "lobby/buttons/right_select_button_01.png");
+		// this.leftButton = game.add.button(150, 180, TEXTURES, this.leftSelect, this, "lobby/buttons/left_select_button_02.png", "lobby/buttons/left_select_button_01.png");
+		// this.rightButton = game.add.button(400, 180, TEXTURES, this.rightSelect, this, "lobby/buttons/right_select_button_02.png", "lobby/buttons/right_select_button_01.png");
 		this.okButton = game.add.button(495, 460, TEXTURES, this.confirmStageSelection, this, "lobby/buttons/ok_button_02.png", "lobby/buttons/ok_button_01.png");
 
-		this.leftButton.setDownSound(buttonClickSound);
-		this.rightButton.setDownSound(buttonClickSound);
+		// this.leftButton.setDownSound(buttonClickSound);
+		// this.rightButton.setDownSound(buttonClickSound);
 		this.okButton.setDownSound(buttonClickSound);
 
 		this.thumbnail = game.add.image(thumbnailXOffset, thumbnailYOffset, TEXTURES, initialStage.thumbnailKey);
@@ -52,30 +52,10 @@ StageSelect.prototype = {
 		this.configureText(this.stageSizeText, "white", 18);
 	},
 
-	// leftSelect: function() {
-	// 	if(this.selectedStageIndex === 0) {
-	// 		this.selectedStageIndex = stages.length - 1;
-	// 	} else {
-	// 		this.selectedStageIndex--;
-	// 	}
-	//
-	// 	this.updateStageInfo();
+	// update: function() {
+	// 	repeatingBombTilesprite.tilePosition.x++;
+	// 	repeatingBombTilesprite.tilePosition.y--;
 	// },
-
-	// rightSelect: function() {
-	// 	if(this.selectedStageIndex === stages.length - 1) {
-	// 		this.selectedStageIndex = 0;
-	// 	} else {
-	// 		this.selectedStageIndex++;
-	// 	}
-
-	// 	this.updateStageInfo();
-	// },
-
-	update: function() {
-		repeatingBombTilesprite.tilePosition.x++;
-		repeatingBombTilesprite.tilePosition.y--;
-	},
 
 	updateStageInfo: function() {
 		var newStage = stages[this.selectedStageIndex];

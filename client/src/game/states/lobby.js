@@ -77,10 +77,10 @@ Lobby.prototype = {
 		}
 	},
 
-	update: function() {
-		repeatingBombTilesprite.tilePosition.x++;
-		repeatingBombTilesprite.tilePosition.y--;
-	},
+	// update: function() {
+	// 	repeatingBombTilesprite.tilePosition.x++;
+	// 	repeatingBombTilesprite.tilePosition.y--;
+	// },
 
 	addSlots: function(gameData) {
 		if(this.slots.length > 0)  // TODO: get rid of this
@@ -102,7 +102,7 @@ Lobby.prototype = {
 			var slotYOffset = initialSlotYOffset + i * lobbySlotDistance;
 			this.slots[i] = game.add.button(slotXOffset, slotYOffset, TEXTURES, callback, null, settings.overFrame, settings.outFrame);
 			this.slots[i].setDownSound(buttonClickSound);
-			
+
 			var text = game.add.text(slotXOffset + textXOffset, slotYOffset + textYOffset, settings.text);
 			TextConfigurer.configureText(text, "white", 18);
 			text.anchor.setTo(.5, .5);
