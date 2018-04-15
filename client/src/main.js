@@ -7,7 +7,6 @@ window.TEXTURES = "bbo_textures";
 startGame();
 
 function startGame() {
-	// socket = io("https://limitless-brook-9339.herokuapp.com:443");
 	socket = io("https://explosion123.herokuapp.com");
     // socket = io("http://localhost:8000");
 
