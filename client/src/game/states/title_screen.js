@@ -2,24 +2,25 @@ var Fader = require("../util/fader");
 
 function TitleScreen() {};
 
-var titleOffsetX = 55;
-var titleOffsetY = 20;
+// var titleOffsetX = 55;
+// var titleOffsetY = 20;
 
-var buttonOffsetX = 40;
-var startButtonOffsetY = 275;
-var howToButtonOffsetY = 360;
+var buttonOffsetX = 190;
+var startButtonOffsetY = 235;
+var howToButtonOffsetY = 315;
 
-var bombermanOffsetX = 305;
-var bombermanOffsetY = 265;
-
-var firstBombOffsetX = bombermanOffsetX + 12;
-var firstBombOffsetY = bombermanOffsetY + 57;
-
-var secondBombOffsetX = bombermanOffsetX + 185;
-var secondBombOffsetY = bombermanOffsetY + 141;
+// var bombermanOffsetX = 305;
+// var bombermanOffsetY = 265;
+//
+// var firstBombOffsetX = bombermanOffsetX + 12;
+// var firstBombOffsetY = bombermanOffsetY + 57;
+//
+// var secondBombOffsetX = bombermanOffsetX + 185;
+// var secondBombOffsetY = bombermanOffsetY + 141;
 
 
 TitleScreen.prototype = {
+
 	create: function() {
 		this.showingInstructions = false;
 		this.justClickedHowTo = false;
@@ -27,24 +28,25 @@ TitleScreen.prototype = {
 
 
 		this.createButtons();
-
+		this.game.load.image("bg", "assets/bb.png");
 		var startButtonTween = this.createInitialButtonTween(this.startButton, 200);
 		var howToButtonTween = this.createInitialButtonTween(this.howToButton, 400);
 
 		// var title = game.add.image(titleOffsetX, titleOffsetY - 200, TEXTURES, "background1.png");
-		var title = game.add.image(titleOffsetX, titleOffsetY - 200, TEXTURES, "background1.png");
 
-		var titleTween = game.add.tween(title);
+		// var title = game.add.tileSprite(0, 0, 600, 600, "bg");
+		//
+		// var titleTween = game.add.tween(title);
 		titleTween.to({y: titleOffsetY}, 500, Phaser.Easing.Bounce.Out, true, 200).start();
 
 
 
-		var bombermanTween = game.add.tween(bomberman).to({x: bombermanOffsetX}, 300, Phaser.Easing.Default, false, 100);
-		bombermanTween.onComplete.addOnce(function() {
-			bomberman.animations.play("bomb_animation");
-		});
-
-		bombermanTween.start();
+		// var bombermanTween = game.add.tween(bomberman).to({x: bombermanOffsetX}, 300, Phaser.Easing.Default, false, 100);
+		// bombermanTween.onComplete.addOnce(function() {
+		// 	bomberman.animations.play("bomb_animation");
+		// });
+		//
+		// bombermanTween.start();
 		startButtonTween.start();
 		howToButtonTween.start();
 	},
@@ -55,7 +57,7 @@ TitleScreen.prototype = {
 
 
 
-		// game.add.image(0, 0, TEXTURES, "titlescreen/background.png");
+		game.add.image(0, 0, TEXTURES, "titlescreen/background.png");
 
 
 	createButtons: function() {

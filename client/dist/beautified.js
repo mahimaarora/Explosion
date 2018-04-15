@@ -676,9 +676,9 @@
         var a = t("../util/fader"),
             s = 55,
             o = 20,
-            n = 40,
-            r = 275,
-            l = 360,
+            n = 190,
+            r = 235,
+            l = 315,
             m = 305,
             h = 265,
             d = 700,
@@ -688,20 +688,21 @@
             create: function() {
                 this.showingInstructions = !1, this.justClickedHowTo = !1, this.justClickedOutOfHowTo = !1,this.createButtons();
                 var t = this.createInitialButtonTween(this.startButton, 200),
-                    e = this.createInitialButtonTween(this.howToButton, 400),
-                    i = game.add.image(s, o - 200, TEXTURES, "titlescreen/title.png"),
-                    a = game.add.tween(i);
-                a.to({
-                    y: o
-                }, 500, Phaser.Easing.Bounce.Out, !0, 200).start();
-                var n = game.add.sprite(m + 400, h, TEXTURES, "titlescreen/bomberman/bomberman_01.png");
-                n.animations.add("bomb_animation", ["titlescreen/bomberman/bomberman_01.png", "titlescreen/bomberman/bomberman_02.png", "titlescreen/bomberman/bomberman_03.png", "titlescreen/bomberman/bomberman_04.png", "titlescreen/bomberman/bomberman_05.png"], 5, !0);
-                var r = game.add.tween(n).to({
-                    x: m
-                }, 300, Phaser.Easing.Default, !1, 100);
-                r.onComplete.addOnce(function() {
-                    n.animations.play("bomb_animation")
-                }), r.start(), t.start(), e.start()
+                    e = this.createInitialButtonTween(this.howToButton, 400);
+                    //i = game.add.image(s, o - 200, TEXTURES, "titlescreen/title.png"),
+                  //  a = game.add.tween(i);
+                // a.to({
+                //     y: o
+                // }, 500, Phaser.Easing.Bounce.Out, !0, 200).start();
+                // var n = game.add.sprite(m + 400, h, TEXTURES, "titlescreen/bomberman/bomberman_01.png");
+                // n.animations.add("bomb_animation", ["titlescreen/bomberman/bomberman_01.png", "titlescreen/bomberman/bomberman_02.png", "titlescreen/bomberman/bomberman_03.png", "titlescreen/bomberman/bomberman_04.png", "titlescreen/bomberman/bomberman_05.png"], 5, !0);
+                // var r = game.add.tween(n).to({
+                //     x: m
+                // }, 300, Phaser.Easing.Default, !1, 100);
+                // r.onComplete.addOnce(function() {
+                //     n.animations.play("bomb_animation")
+                // }), r.start(),
+                 t.start(), e.start()
             },
             createInitialButtonTween: function(t, e) {
                 return game.add.tween(t).to({
@@ -709,10 +710,16 @@
                 }, 300, Phaser.Easing.Default, !1, e)
             },
 
+
+            // game.add.image("bg", "bb.png");
+            // var title = game.add.tileSprite(0, 0, 600, 600, "bg");
             createButtons: function() {
+              //   console.log("in preload");
+              // this.game.load.image("bg", "assets/bb.png");
               var t = (game.camera.width, -260),
                   e = u * (game.camera.width - t) / game.camera.width;
-              game.add.image(0, 0, TEXTURES, "background1.png");
+
+               // game.add.tileSprite(0, 0, 600, 600, "bg");
                 this.startButton = game.add.button(n - 250, r, TEXTURES, function() {
                     this.showingInstructions || this.justClickedOutOfHowTo || a.fadeOut(function() {
                         game.state.start("Lobby")
