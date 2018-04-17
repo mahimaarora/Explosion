@@ -7,7 +7,7 @@ window.TEXTURES = "bbo_textures";
 startGame();
 
 function startGame() {
-	socket = io("https://explosion123.herokuapp.com");
+	socket = io("https://explosion12.herokuapp.com");
     // socket = io("http://localhost:8000");
 
     require("./game/mods/phaser_enhancements");
