@@ -1,3 +1,5 @@
 # Explosion
 
-[GAME LINK](explosion123.herokuapp.com)
+Go to the link below and enjoy the game
+
+explosion123.herokuapp.com
